@@ -34,12 +34,12 @@ public class EmployeeController {
         return employeeDao.getAllEmployees();
     }
 
-    // Handles GET requests to /employees/{id}
-    @GetMapping("/{id}")
-    public ResponseEntity<Employee> getEmployee(@PathVariable Integer id) {
+    // Handles GET requests to /employees/{employee_id}
+    @GetMapping("/{employee_id}")
+    public ResponseEntity<Employee> getEmployee(@PathVariable Integer employee_id) {
 
         // Finds an employee using the specified ID
-        Employee employee = employeeDao.getEmployeeById(id);
+        Employee employee = employeeDao.getEmployeeById(employee_id);
 
         // Returns 404 if the employee does not exist
         if (employee == null) {
@@ -55,14 +55,6 @@ public class EmployeeController {
     public ResponseEntity<Void> addEmployee(
             @RequestBody Employee employee) {
 
-        // Generates a simple ID for the new employee
-        Integer id = employeeDao.getAllEmployees()
-                .getEmployeeList()
-                .size() + 1;
-
-        // Sets the generated ID
-        employee.setId(id);
-
         // Adds the employee to the list
         employeeDao.addEmployee(employee);
 
@@ -70,7 +62,7 @@ public class EmployeeController {
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(employee.getId())
+                .buildAndExpand(employee.getEmployeeId())
                 .toUri();
 
         // Returns HTTP 201 Created with the resource location

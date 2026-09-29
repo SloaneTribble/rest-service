@@ -7,15 +7,15 @@ import java.util.List;
 public class Employees {
 
     // Creates an empty list to store employee objects
-    private List<Employee> employeeList = new ArrayList<>();
+    private List<Employee> employees = new ArrayList<>();
 
     // Returns the list of employees
-    public List<Employee> getEmployeeList() {
-        return employeeList;
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
     // Updates the employee list
     public void setEmployeeList(List<Employee> employeeList) {
-        this.employeeList = employeeList;
+        this.employees = employeeList;
     }
 }

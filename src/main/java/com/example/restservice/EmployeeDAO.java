@@ -14,16 +14,16 @@ public class EmployeeDAO {
     public EmployeeDAO() {
 
         // Adds the first employee
-        employees.getEmployeeList()
-                .add(new Employee(1, "Prem", "Tiwari", "prem@gmail.com"));
+        employees.getEmployees()
+                .add(new Employee(1, "Prem", "Tiwari", "prem@gmail.com", "Editor"));
 
         // Adds the second employee
-        employees.getEmployeeList()
-                .add(new Employee(2, "Vikash", "Kumar", "vikash@gmail.com"));
+        employees.getEmployees()
+                .add(new Employee(2, "Vikash", "Kumar", "vikash@gmail.com", "HR Expert"));
 
         // Adds the third employee
-        employees.getEmployeeList()
-                .add(new Employee(3, "Ritesh", "Ojha", "ritesh@gmail.com"));
+        employees.getEmployees()
+                .add(new Employee(3, "Ritesh", "Ojha", "ritesh@gmail.com", "Courier"));
     }
 
     // Returns all employees
@@ -32,18 +32,18 @@ public class EmployeeDAO {
     }
 
     // Finds an employee using the employee ID
-    public Employee getEmployeeById(Integer id) {
+    public Employee getEmployeeById(Integer employee_id) {
 
         // Searches the employee list for the specified ID
-        return employees.getEmployeeList()
+        return employees.getEmployees()
                 .stream()
-                .filter(employee -> employee.getId().equals(id))
+                .filter(employee -> employee.getEmployeeId().equals(employee_id))
                 .findFirst()
                 .orElse(null);
     }
 
     // Adds a new employee to the list
     public void addEmployee(Employee employee) {
-        employees.getEmployeeList().add(employee);
+        employees.getEmployees().add(employee);
     }
 }
